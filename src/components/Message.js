@@ -15,13 +15,17 @@ chat.on("disconnect", function() {
 
 export default class Message extends Component {
   sendMessage = () => {
-    // axios.post("/api/send/message", {}).then(res => {
-    //   console.log(res.data);
-    // });
-    chat.emit("message", { content: "My message" });
+    axios.post("/api/send/message", {}).then(res => {
+      console.log(res.data);
+    });
+    // chat.emit("message", { content: "My message" });
   };
 
   render() {
-    return <div onClick={this.sendMessage}>{this.props.data.content}</div>;
+    return (
+      <div onClick={this.sendMessage}>
+        <img src={this.props.data.src} alt="" />
+      </div>
+    );
   }
 }

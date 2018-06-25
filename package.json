@@ -5,6 +5,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
+    "lodash": "^4.17.10",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "socket.io": "^2.1.1",

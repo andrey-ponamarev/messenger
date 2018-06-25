@@ -7,9 +7,9 @@ export default class ChatHistory extends Component {
     return (
       <MessengerConsumer>
         {({ messages }) =>
-          messages.order.map(id => {
-            const { type, data } = messages.data[id];
-            return <Message key={id} type={type} data={data} />;
+          messages.map(message => {
+            const { type, data } = message;
+            return <Message key={message.id} data={message} />;
           })
         }
       </MessengerConsumer>

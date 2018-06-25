@@ -1,44 +1,24 @@
 import React, { Component } from "react";
+import { getTread } from "../services";
 
 const Context = React.createContext();
 
 export default class MessengerProvider extends Component {
   state = {
     activeThread: 1,
-    history: {
-      1: {
-        order: [1, 2, 3, 4],
-        data: {
-          1: {
-            type: "media",
-            data: {
-              content: "Hello"
-            }
-          },
-          2: {
-            type: "media",
-            data: {
-              content: "Hello"
-            }
-          },
-          3: {
-            type: "media",
-            data: {
-              content: "Hello"
-            }
-          },
-          4: {
-            type: "media",
-            data: {
-              content: "Hello"
-            }
-          }
-        },
-        unreadCount: 0,
-        draft: ""
-      }
-    }
+    history: {}
   };
+
+  componentDidMount() {
+    getTread().then(messages => {
+      this.setState({
+        history: {
+          1: messages
+        }
+      });
+    });
+    this.setState();
+  }
 
   render() {
     const { history, activeThread } = this.state;
